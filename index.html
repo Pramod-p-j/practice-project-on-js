@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Button Animation</h1>
+    <audio id="aud" src="./audio.mp3"></audio>
+    
+    <button id="b1">Play</button>
+    <button id="b2">Pause</button>
+    <button id="b3">Stop</button>
+    
+    <script>
+        const pl = document.querySelector('#aud');
+        const b1 = document.querySelector("#b1");
+        const b2 = document.querySelector("#b2");
+        const b3 = document.querySelector("#b3");
+        
+        let timeout;
+        function playClip(){
+            pl.play();
+            b2.classList.remove('pause');
+            b1.classList.add('playing');
+            b3.classList.remove('stop');
+        }
+
+        
+
+        function pauseClip(){
+            pl.pause();
+            b2.classList.add('pause');
+            b1.classList.remove('playing');
+            b3.classList.remove('stop');
+        }
+
+        function stopClip(){
+            pl.pause();
+            pl.currentTime = 0;
+            b3.classList.add('stop');
+            b1.classList.remove('playing');
+            b2.classList.remove('pause');
+        }
+
+        b1.addEventListener('click', playClip );
+        b2.addEventListener('click', pauseClip);
+        b3.addEventListener('click', stopClip);
+
+    </script>
+</body>
+</html>
